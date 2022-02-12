@@ -10,7 +10,7 @@
       content="Piktures is a simple webapp which allows users to view and download images."
     />
     <link rel="apple-touch-icon" href="PWA/icons/logo192.png" />
-    <link rel="manifest" href="PWA/manifest.json" />
+    <link rel="manifest" href="./manifest.json" />
     <title>Piktures</title>
 
     <style>
@@ -41,7 +41,7 @@
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker
-            .register("PWA/ServiceWorker.js")
+            .register("./ServiceWorker.js")
             .then((Reg) => {
               console.log("SW Registered: ", Reg.scope);
             })

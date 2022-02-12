@@ -3,7 +3,7 @@
   "name": "Piktures - ChiragChrg",
   "icons": [
     {
-      "src": "../favicon.ico",
+      "src": "./favicon.ico",
       "sizes": "64x64",
       "type": "image/x-icon"
     },
