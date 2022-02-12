@@ -118,13 +118,13 @@ body::-webkit-scrollbar {
 
 /* Dashboad Images CSS */
 .DashImages {
-  padding: 2em 3em;
-  column-width: calc(200px + 10vw);
+  padding: 1em;
+  column-width: calc(80px + 10vw);
 }
 
 .SearchImages {
-  padding: 2em 3em;
-  column-width: calc(200px + 10vw);
+  padding: 1em;
+  column-width: calc(80px + 10vw);
 }
 
 .Image {
@@ -134,5 +134,5 @@ body::-webkit-scrollbar {
 
 .Image img {
   width: 100%;
-  border-radius: 1em;
+  border-radius: 0.5em;
 }
