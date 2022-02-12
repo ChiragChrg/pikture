@@ -1,2 +1,3 @@
-# Photon
+# Pikture
+
 Image Browsing Website

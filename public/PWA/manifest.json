@@ -1,0 +1,26 @@
+{
+  "short_name": "Piktures",
+  "name": "Piktures - ChiragChrg",
+  "icons": [
+    {
+      "src": "../favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icons/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icons/logo512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "description": "Piktures is an Image Browsing Webapp that allows you to search for images and view them. You can also download the images and share them with your friends."
+}
