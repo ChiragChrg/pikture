@@ -1,4 +1,4 @@
-@media (min-width: 396px) {
+@media (max-width: 395px) {
   :root {
     --primary: #00adb5;
     --secondary: #fff;
@@ -7,6 +7,8 @@
     --active: #00adb5;
     --white: #fff;
     --theme: #303030;
+    --navbg: #fff;
+    --navcolor: #00adb5;
   }
 
   [data-theme="dark"] {
@@ -17,6 +19,8 @@
     --active: #fff;
     --white: #fff;
     --theme: #ffd700;
+    --navbg: #393e46;
+    --navcolor: #00adb5;
   }
 
   * {
@@ -26,9 +30,15 @@
     font-family: Quicksand;
   }
 
+  html {
+    overflow-x: hidden;
+  }
+
   body {
     scrollbar-width: none;
     -ms-overflow-style: none;
+    overflow-x: hidden;
+    height: 100vh;
     background-color: var(--bg);
   }
 
@@ -41,7 +51,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5em 3em;
+    padding: 1em 1.5em;
     background-color: var(--primary);
   }
 
@@ -51,71 +61,75 @@
     align-items: center;
     text-decoration: none;
     color: var(--secondary);
-    padding: 0 1em;
   }
 
   .Logo a i {
-    font-size: 2.5em;
+    font-size: 2em;
   }
 
   .Logo a h4 {
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: bold;
     letter-spacing: 3px;
   }
 
   .openbtn {
-    display: none;
+    outline-style: none;
+    border: none;
+    background: none;
+    color: var(--white);
+    font-size: 1em;
+    cursor: pointer;
   }
 
   .closebtn {
-    display: none;
-  }
-
-  .Nav {
-    margin-top: 0;
-  }
-
-  .Nav ul {
-    list-style: none;
-  }
-
-  .Nav ul li {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  .Nav ul li a {
-    text-decoration: none;
-    padding: 7px 25px;
-    margin: 0 10px;
-    color: var(--white);
-    font-size: 16px;
-    letter-spacing: 0.5px;
-    border-radius: 50px;
-    border: 1.5px solid var(--secondary);
-    transition: 0.3s ease-in-out;
-  }
-
-  .Nav ul li a.active {
-    border-radius: 0px 55px 10px 35px;
-    background-color: var(--secondary);
+    width: 100%;
+    text-align: center;
+    font-size: 2em;
     color: var(--active);
+    text-decoration: none;
+    cursor: pointer;
   }
-  .Nav ul li a:hover {
-    border-radius: 0px 55px 10px 35px;
-    background-color: var(--secondary);
-    color: var(--primary);
+
+  .sidebar {
+    height: 100vh;
+    width: 0%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    background-color: var(--navbg);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding-top: 60px;
+    transition: 0.5s;
+  }
+  .sidebar ul li {
+    padding-top: 80px;
+  }
+
+  .sidebar ul li a {
+    padding: 10px 0px 15px 0px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 25px;
+    font-weight: 900;
+    color: var(--navcolor);
+    display: block;
+    transition: 0.5s;
+    letter-spacing: 0.5px;
+  }
+
+  .sidebar a.active {
+    color: var(--white);
+    background-color: var(--navcolor);
   }
 
   .toggleHolder {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 1em;
-    padding-left: 1.5em;
-    /* width: 100%; */
+    padding: 3em 0;
     position: relative;
   }
 
@@ -133,13 +147,14 @@
     position: sticky;
     top: 0;
     padding: 1.5em 0;
+    z-index: 1;
     backdrop-filter: blur(6px) saturate(180%);
     -webkit-backdrop-filter: blur(6px) saturate(180%);
     background-color: rgba(57, 62, 70, 0.8);
   }
 
   .SearchBar input {
-    width: 50%;
+    width: 60%;
     padding: 0.5em 2em;
     border: none;
     border-radius: 50px;
@@ -154,13 +169,13 @@
 
   /* Dashboad Images CSS */
   .DashImages {
-    padding: 0.5em 1em;
-    column-width: calc(250px + 10vw);
+    padding: 1em;
+    column-width: calc(100px + 10vw);
   }
 
   .SearchImages {
-    padding: 0.5em 1em;
-    column-width: calc(250px + 10vw);
+    padding: 1em;
+    column-width: calc(100px + 10vw);
   }
 
   .Image {

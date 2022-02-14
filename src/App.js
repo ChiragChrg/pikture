@@ -8,9 +8,7 @@ import "./App.css";
 function App() {
   return (
     <Browser>
-      <div>
-        <Navbar />
-      </div>
+      <Navbar />
 
       <Routes>
         <Route path="/" exact element={<Home />} />

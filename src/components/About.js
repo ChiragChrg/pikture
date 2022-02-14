@@ -1,4 +1,6 @@
 import React from "react";
+import "../App.css";
+import "../Mobile.css";
 
 const About = () => {
   return (

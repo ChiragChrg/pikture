@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Photos from "./API/Photos";
 import "../App.css";
+import "../Mobile.css";
 
 const Home = () => {
   //Run fetch function on page load
@@ -19,7 +20,7 @@ const Home = () => {
       `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=popular`
     );
     const data = await res.json();
-    console.log(data);
+    // console.log(data);
     setImages(data);
   };
 
@@ -48,7 +49,7 @@ const Home = () => {
   };
 
   return (
-    <>
+    <div className="container">
       <div className="SearchBar">
         <input
           type="text"
@@ -75,7 +76,7 @@ const Home = () => {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 };
 
