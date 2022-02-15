@@ -119,7 +119,11 @@ const Navbar = () => {
               <Link onClick={SwitchActive} id="B" className="" to="/about">
                 About
               </Link>
-              <a href="https://devbase.netlify.app/" target="_blank">
+              <a
+                href="https://devbase.netlify.app/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 DevBase
               </a>
 
