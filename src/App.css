@@ -130,12 +130,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     position: sticky;
     top: 0;
     padding: 1.5em 0;
     backdrop-filter: blur(6px) saturate(180%);
     -webkit-backdrop-filter: blur(6px) saturate(180%);
     background-color: rgba(57, 62, 70, 0.8);
+    margin-bottom: 1em;
   }
 
   .SearchBar input {
@@ -150,16 +152,40 @@
     text-align: center;
     outline: none;
     transition: 0.3s ease-in-out;
+    margin-bottom: 1em;
+  }
+
+  /* Image Filters */
+  .ImageControl {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Dropdown {
+    width: 200px;
+    color: #fff !important;
+  }
+
+  .Filter-select {
+    padding: 0 !important;
+    color: #fff !important;
   }
 
   /* Dashboad Images CSS */
   .DashImages {
-    padding: 0.5em 1em;
+    padding: 0 1em;
     column-width: calc(250px + 10vw);
   }
 
   .SearchImages {
-    padding: 0.5em 1em;
+    padding: 0 1em;
     column-width: calc(250px + 10vw);
   }
 
@@ -171,5 +197,18 @@
   .Image img {
     width: 100%;
     border-radius: 0.5em;
+  }
+
+  .SkeletonImages {
+    padding: 0 1em;
+    /* column-width: calc(200px + 10vw); */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1em;
+  }
+
+  .Skeleton {
+    /* padding-top: 0.5em; */
+    cursor: pointer;
   }
 }

@@ -5,10 +5,10 @@ const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
 
 const Photos = async (query) => {
   const res = await fetch(
-    `${API}/search/photos?client_id=${API_KEY}&query=${query}&orientation=landscape`
+    `${API}/search/photos?client_id=${API_KEY}&query=${query}&orientation=landscape&page=1&per_page=20&order_by=popular`
   );
   const data = await res.json();
-  console.log(data.results);
+  // console.log(data.results);
   return data.results;
 };
 
