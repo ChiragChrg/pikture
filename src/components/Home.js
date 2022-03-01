@@ -73,7 +73,7 @@ const Home = () => {
       goSearch = "Search"; //if called by pressing Enter
     }
 
-    if (goSearch == "Search") {
+    if (goSearch === "Search") {
       SkeletonBox.style.display = "grid";
       console.log(query, orderBy, orientation);
       const result = await Photos(query, orderBy, orientation);
