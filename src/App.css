@@ -1,12 +1,13 @@
 @media (min-width: 396px) {
   :root {
-    --primary: #00adb5;
+    --primary: #00aeae;
     --secondary: #fff;
     --font: #1e232a;
-    --bg: #ffffff;
+    --bg: #ddd;
     --active: #00adb5;
     --white: #fff;
     --theme: #303030;
+    --search: rgba(104, 109, 118, 0.8);
   }
 
   [data-theme="dark"] {
@@ -17,6 +18,7 @@
     --active: #fff;
     --white: #fff;
     --theme: #ffd700;
+    --search: rgba(89, 94, 102, 0.8);
   }
 
   * {
@@ -136,12 +138,20 @@
     padding: 1.5em 0;
     backdrop-filter: blur(6px) saturate(180%);
     -webkit-backdrop-filter: blur(6px) saturate(180%);
-    background-color: rgba(57, 62, 70, 0.8);
+    background-color: var(--search);
     margin-bottom: 1em;
   }
 
-  .SearchBar input {
+  .SearchHolder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SearchHolder input {
     width: 50%;
+    max-width: 500px;
     padding: 0.5em 2em;
     border: none;
     border-radius: 50px;
@@ -152,20 +162,47 @@
     text-align: center;
     outline: none;
     transition: 0.3s ease-in-out;
-    margin-bottom: 1em;
+    margin: 0 1em;
+  }
+
+  .SIcon {
+    padding: 0.5em 0.5em;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SearchBtn i {
+    font-size: 1.5em;
+    margin-top: 1px;
+    color: #fff;
+  }
+
+  .FilterBtn {
+    cursor: pointer;
+  }
+
+  .FilterBtn i {
+    font-size: 1.2em;
+    margin-top: 1px;
+    color: #fff;
   }
 
   /* Image Filters */
   .ImageControl {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    width: 100%;
+    margin-top: 1em;
   }
 
   .Filter {
     display: flex;
     justify-content: center;
     align-items: center;
+    color: #fff !important;
   }
 
   .Dropdown {
@@ -174,7 +211,23 @@
   }
 
   .Filter-select {
-    padding: 0 !important;
+    width: 100%;
+    padding: 0.5em 2em;
+    outline: none;
+  }
+
+  .MenuItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .MenuItem p {
+    width: 6em;
+  }
+
+  .MuiSelect-select {
     color: #fff !important;
   }
 

@@ -9,6 +9,7 @@ import {
   MenuItem,
   FormControl,
 } from "@mui/material";
+// import { makeStyles } from "@mui/styles";
 import "../App.css";
 import "../Mobile.css";
 
@@ -66,9 +67,16 @@ const Home = () => {
     var DashImages = document.querySelector(".DashImages");
     var SearchImages = document.querySelector(".SearchImages");
 
+    //Just because 'onSubmit' is not working, so using 'onkeypress'
+    var goSearch = evt; //if called by Filter Changes
     if (evt.key === "Enter") {
+      goSearch = "Search"; //if called by pressing Enter
+    }
+
+    if (goSearch == "Search") {
       SkeletonBox.style.display = "grid";
-      const result = await Photos(query);
+      console.log(query, orderBy, orientation);
+      const result = await Photos(query, orderBy, orientation);
       if (result) {
         SkeletonBox.style.display = "none";
         DashImages.style.display = "none";
@@ -93,59 +101,110 @@ const Home = () => {
   ];
 
   //Images Filters
+  const showFilters = () => {
+    const ImageControl = document.querySelector(".ImageControl");
+
+    if (ImageControl.style.display === "none") {
+      ImageControl.style.display = "flex";
+    } else ImageControl.style.display = "none";
+  };
+
+  //The Filters are inverter for unknown reasons,
+  // so Im manually inverting the filters at HTML Div Components
+
   //Image Order By
-  const [orderBy, setOrderBy] = useState("");
+  const [orderBy, setOrderBy] = useState("relevant");
   const onChangeOrderBy = (evt) => {
     setOrderBy(evt.target.value);
+    search("Search");
   };
 
   //Image Orientation
-  const [orientation, setOrientation] = useState("");
+  const { innerWidth: width } = window;
+  if (width < 396) var userOrientation = "portrait";
+  else userOrientation = "landscape";
+
+  const [orientation, setOrientation] = useState(userOrientation);
   const onChangeOrientation = (evt) => {
     setOrientation(evt.target.value);
+    search("Search");
   };
+  //Select Component Custon Styling
+  // const color = "white";
+  // const useStyles = makeStyles({
+  //   select: {
+  //     "&:before": {
+  //       borderColor: color,
+  //     },
+  //     "&:after": {
+  //       borderColor: color,
+  //     },
+  //   },
+  //   icon: {
+  //     fill: color,
+  //   },
+  // });
+  // const classes = useStyles();
 
   return (
     <div className="container">
       <div className="SearchBar">
-        <input
-          type="text"
-          className="Search"
-          placeholder="Search for Piktures"
-          value={query}
-          onChange={onChange}
-          onKeyPress={search}
-        />
+        <div className="SearchHolder">
+          <div className="SearchBtn SIcon">
+            <i className="fas fa-search"></i>
+          </div>
+          <input
+            type="text"
+            className="Search"
+            placeholder="Search for Piktures"
+            value={query}
+            onChange={onChange}
+            onKeyPress={search}
+          />
+          <div className="FilterBtn SIcon" onClick={showFilters}>
+            <i className="fas fa-filter"></i>
+          </div>
+        </div>
 
-        <div className="ImageControl">
+        <div className="ImageControl" style={{ display: "none" }}>
           <div className="Filter OrderBy">
-            <div className="FilterIcon">
-              <i className="fad fa-mountains"></i>
-            </div>
             <div className="Dropdown">
               <FormControl fullWidth>
                 <InputLabel id="orderby-label">Order By</InputLabel>
                 <Select
                   labelId="orderby-select"
                   id="orderby-select"
+                  className="Filter-Select"
                   value={orderBy}
-                  autoWidth
-                  height="100px"
+                  fullWidth
                   label="Order By"
                   onChange={onChangeOrderBy}
+                  // className={classes.select}
+                  // inputProps={{
+                  //   classes: {
+                  //     icon: classes.icon,
+                  //     root: classes.root,
+                  //   },
+                  // }}
                 >
-                  <MenuItem value={"latest"}>Latest</MenuItem>
-                  <MenuItem value={"oldest"}>Oldest</MenuItem>
-                  <MenuItem value={"popular"}>Popular</MenuItem>
+                  <MenuItem value={"latest"}>
+                    <div className="MenuItem">
+                      <i className="far fa-fire-alt"></i>
+                      <p>Latest</p>
+                    </div>
+                  </MenuItem>
+                  <MenuItem value={"relevant"}>
+                    <div className="MenuItem">
+                      <i className="far fa-thumbs-up"></i>
+                      <p>Relevant</p>
+                    </div>
+                  </MenuItem>
                 </Select>
               </FormControl>
             </div>
           </div>
 
           <div className="Filter Orientation">
-            <div className="FilterIcon">
-              <i className="fad fa-mountains"></i>
-            </div>
             <div className="Dropdown">
               <FormControl fullWidth sx={{ color: "#fff" }}>
                 <InputLabel id="orient-label">Orientation</InputLabel>
@@ -158,17 +217,23 @@ const Home = () => {
                   label="Orientation"
                   onChange={onChangeOrientation}
                 >
-                  <MenuItem className="MenuItem" value={"landscape"}>
-                    {/* <i className="far fa-rectangle-wide"></i> */}
-                    <p>Landscape</p>
+                  <MenuItem value={"landscape"}>
+                    <div className="MenuItem">
+                      <i className="far fa-rectangle-wide"></i>
+                      <p>Landscape</p>
+                    </div>
                   </MenuItem>
-                  <MenuItem className="MenuItem" value={"portrait"}>
-                    {/* <i className="far fa-rectangle-portrait"></i> */}
-                    <p>Portrait</p>
+                  <MenuItem value={"portrait"}>
+                    <div className="MenuItem">
+                      <i className="far fa-rectangle-portrait"></i>
+                      <p>Portrait</p>
+                    </div>
                   </MenuItem>
-                  <MenuItem className="MenuItem" value={"squarish"}>
-                    {/* <i className="far fa-square"></i> */}
-                    <p>Squarish</p>
+                  <MenuItem value={"squarish"}>
+                    <div className="MenuItem">
+                      <i className="far fa-square"></i>
+                      <p>Squarish</p>
+                    </div>
                   </MenuItem>
                 </Select>
               </FormControl>
