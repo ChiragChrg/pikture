@@ -61,6 +61,31 @@ const Home = () => {
 
   //Search Query by calling function from Photos.js
   const [srchImg, setSrchImg] = useState([]);
+  var orderBy = "relevant";
+  var orientation;
+
+  //Image Orientation Acc to device
+  const { innerWidth: width } = window;
+  if (width < 396) orientation = "portrait";
+  else orientation = "landscape";
+
+  const [selectOrient, setSelectOrient] = useState(orientation); //Only used to set Select tag value
+  const onChangeOrientation = (evt) => {
+    orientation = evt.target.value;
+    setSelectOrient(orientation);
+    setSelectOrder(orderBy); //Resetting Select box values
+    search("Search");
+  };
+
+  //Image Order By
+  const [selectOrder, setSelectOrder] = useState("relevant"); //Only used to set Select tag value
+  const onChangeOrderBy = (evt) => {
+    orderBy = evt.target.value;
+    setSelectOrder(orderBy);
+    setSelectOrient(orientation); //Resetting Select box values
+    search("Search");
+  };
+
   const search = async (evt) => {
     //Div Elements
     var SkeletonBox = document.querySelector(".SkeletonImages");
@@ -75,7 +100,7 @@ const Home = () => {
 
     if (goSearch === "Search") {
       SkeletonBox.style.display = "grid";
-      console.log(query, orderBy, orientation);
+      // console.log(query, orderBy, orientation);
       const result = await Photos(query, orderBy, orientation);
       if (result) {
         SkeletonBox.style.display = "none";
@@ -109,43 +134,6 @@ const Home = () => {
     } else ImageControl.style.display = "none";
   };
 
-  //The Filters are inverter for unknown reasons,
-  // so Im manually inverting the filters at HTML Div Components
-
-  //Image Order By
-  const [orderBy, setOrderBy] = useState("relevant");
-  const onChangeOrderBy = (evt) => {
-    setOrderBy(evt.target.value);
-    search("Search");
-  };
-
-  //Image Orientation
-  const { innerWidth: width } = window;
-  if (width < 396) var userOrientation = "portrait";
-  else userOrientation = "landscape";
-
-  const [orientation, setOrientation] = useState(userOrientation);
-  const onChangeOrientation = (evt) => {
-    setOrientation(evt.target.value);
-    search("Search");
-  };
-  //Select Component Custon Styling
-  // const color = "white";
-  // const useStyles = makeStyles({
-  //   select: {
-  //     "&:before": {
-  //       borderColor: color,
-  //     },
-  //     "&:after": {
-  //       borderColor: color,
-  //     },
-  //   },
-  //   icon: {
-  //     fill: color,
-  //   },
-  // });
-  // const classes = useStyles();
-
   return (
     <div className="container">
       <div className="SearchBar">
@@ -175,17 +163,10 @@ const Home = () => {
                   labelId="orderby-select"
                   id="orderby-select"
                   className="Filter-Select"
-                  value={orderBy}
+                  value={selectOrder}
                   fullWidth
                   label="Order By"
                   onChange={onChangeOrderBy}
-                  // className={classes.select}
-                  // inputProps={{
-                  //   classes: {
-                  //     icon: classes.icon,
-                  //     root: classes.root,
-                  //   },
-                  // }}
                 >
                   <MenuItem value={"latest"}>
                     <div className="MenuItem">
@@ -212,7 +193,7 @@ const Home = () => {
                   labelId="orient-select"
                   id="orient-select"
                   className="Filter-Select"
-                  value={orientation}
+                  value={selectOrient}
                   fullWidth
                   label="Orientation"
                   onChange={onChangeOrientation}
