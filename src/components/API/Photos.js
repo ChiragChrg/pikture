@@ -6,7 +6,7 @@ const Photos = async (query, orderBy, orientation) => {
 
   const res = await fetch(URL);
   const data = await res.json();
-  console.log(data.results);
+  // console.log(data.results);
   return data.results;
 };
 
