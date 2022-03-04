@@ -8,6 +8,7 @@
     --white: #fff;
     --theme: #303030;
     --search: rgba(104, 109, 118, 0.8);
+    --footer: #373a40;
   }
 
   [data-theme="dark"] {
@@ -19,6 +20,7 @@
     --white: #fff;
     --theme: #ffd700;
     --search: rgba(89, 94, 102, 0.8);
+    --footer: #373a40;
   }
 
   * {
@@ -263,5 +265,59 @@
   .Skeleton {
     /* padding-top: 0.5em; */
     cursor: pointer;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--footer);
+    padding: 2em;
+    margin-top: 2em;
+  }
+
+  footer p {
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-align: center;
+    padding: 2% 0;
+    color: #ddd;
+  }
+
+  .social {
+    padding: 1% 0;
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+  }
+
+  .social a {
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5em;
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+  }
+
+  .social a:hover {
+    transform: rotate(360deg);
+    box-shadow: 0px 0px 20px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  #f i {
+    color: #186dc2;
+    padding: 3px 1.5px 0px 1.5px;
+  }
+  #i i {
+    color: #e1306c;
+    padding: 3px 4px 0.9px 3.5px;
+  }
+  #t i {
+    color: #1da1f2;
+    padding: 3px 1.5px 0px 1.5px;
   }
 }

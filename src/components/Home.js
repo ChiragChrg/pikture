@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Photos from "./API/Photos";
-// import Skeleton from "@mui/material/Skeleton";
-// import Select from "@mui/material/Select";
 import {
   Skeleton,
   InputLabel,
@@ -9,7 +7,6 @@ import {
   MenuItem,
   FormControl,
 } from "@mui/material";
-// import { makeStyles } from "@mui/styles";
 import "../App.css";
 import "../Mobile.css";
 
@@ -36,7 +33,7 @@ const Home = () => {
     SkeletonBox.style.display = "grid";
 
     const res = await fetch(
-      `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=popular`
+      `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=latest`
     );
     const data = await res.json();
     if (data) {
