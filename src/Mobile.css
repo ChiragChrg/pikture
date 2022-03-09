@@ -1,12 +1,14 @@
 @media (max-width: 395px) {
   :root {
-    --primary: #00adb5;
+    --primary: #00aeae;
     --secondary: #fff;
     --font: #1e232a;
-    --bg: #ffffff;
+    --bg: #ddd;
     --active: #00adb5;
     --white: #fff;
     --theme: #303030;
+    --search: rgba(104, 109, 118, 0.8);
+    --footer: #373a40;
     --navbg: #fff;
     --navcolor: #00adb5;
   }
@@ -19,6 +21,8 @@
     --active: #fff;
     --white: #fff;
     --theme: #ffd700;
+    --search: rgba(89, 94, 102, 0.8);
+    --footer: #373a40;
     --navbg: #393e46;
     --navcolor: #00adb5;
   }
@@ -38,7 +42,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     overflow-x: hidden;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: var(--bg);
   }
 
@@ -144,6 +148,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     position: sticky;
     top: 0;
     padding: 1.5em 0;
@@ -151,9 +156,17 @@
     backdrop-filter: blur(6px) saturate(180%);
     -webkit-backdrop-filter: blur(6px) saturate(180%);
     background-color: rgba(57, 62, 70, 0.8);
+    margin-bottom: 1em;
   }
 
-  .SearchBar input {
+  .SearchHolder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SearchHolder input {
     width: 60%;
     padding: 0.5em 2em;
     border: none;
@@ -165,26 +178,155 @@
     text-align: center;
     outline: none;
     transition: 0.3s ease-in-out;
+    margin: 0 1em;
+  }
+
+  .SIcon {
+    padding: 0.5em 0.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SearchBtn i {
+    font-size: 1.5em;
+    margin-top: 1px;
+    color: #fff;
+  }
+
+  .FilterBtn {
+    cursor: pointer;
+  }
+
+  .FilterBtn i {
+    font-size: 1.2em;
+    margin-top: 1px;
+    color: #fff;
+  }
+
+  /* Image Filters */
+  .ImageControl {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 1.5em;
+  }
+
+  .Filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff !important;
+  }
+
+  .Dropdown {
+    width: 10em;
+  }
+
+  .Filter-select {
+    width: 100%;
+    padding: 0.5em 2em;
+    outline: none;
+  }
+
+  .MenuItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .MenuItem p {
+    width: 6em;
+    text-align: center;
+  }
+
+  /* MUI component class names for Select tag*/
+  .MuiOutlinedInput-notchedOutline {
+    border: 1px solid #ddd !important;
+  }
+
+  .MuiInputLabel-root,
+  .MuiSelect-select,
+  .MuiSvgIcon-root {
+    color: #fff !important;
   }
 
   /* Dashboad Images CSS */
   .DashImages {
-    padding: 1em;
+    padding: 0 1em;
     column-width: calc(100px + 10vw);
   }
 
   .SearchImages {
-    padding: 1em;
+    padding: 0 1em;
     column-width: calc(100px + 10vw);
+    min-height: 60vh;
   }
 
   .Image {
     padding-top: 0.5em;
-    cursor: pointer;
   }
 
   .Image img {
     width: 100%;
     border-radius: 0.5em;
+  }
+
+  .SkeletonImages {
+    padding: 0 1em;
+    /* column-width: calc(200px + 10vw); */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 1em;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--footer);
+    padding: 2em;
+    margin-top: 2em;
+  }
+
+  footer p {
+    font-weight: 600;
+    letter-spacing: 1.2px;
+    text-align: center;
+    padding: 2% 0;
+    color: #ddd;
+  }
+
+  .social {
+    padding: 1% 0;
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+  }
+
+  .social a {
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5em;
+    text-decoration: none;
+  }
+
+  #f i {
+    color: #186dc2;
+    padding: 3px 1.5px 0px 1.5px;
+  }
+  #i i {
+    color: #e1306c;
+    padding: 3px 4px 0.9px 3.5px;
+  }
+  #t i {
+    color: #1da1f2;
+    padding: 3px 1.5px 0px 1.5px;
   }
 }

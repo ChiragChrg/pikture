@@ -37,6 +37,8 @@ const Search = () => {
           SkeletonBox.style.display = "none";
           SearchImages.style.display = "block";
         } else {
+          SkeletonBox.style.display = "grid";
+          SearchImages.style.display = "none";
           console.log("Error");
         }
       } catch (err) {

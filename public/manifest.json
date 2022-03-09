@@ -3,24 +3,50 @@
   "name": "Piktures - ChiragChrg",
   "icons": [
     {
-      "src": "./favicon.ico",
-      "sizes": "64x64",
-      "type": "image/x-icon"
+      "src": "assets/icons/48.png",
+      "sizes": "48x48",
+      "type": "image/png"
     },
     {
-      "src": "icons/logo192.png",
-      "type": "image/png",
-      "sizes": "192x192"
+      "src": "assets/icons/72.png",
+      "sizes": "72x72",
+      "type": "image/png"
     },
     {
-      "src": "icons/logo512.png",
+      "src": "assets/icons/96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "sizes": "512x512"
+      "purpose": "maskable"
+    },
+    {
+      "src": "assets/icons/384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icons/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff",
+  "theme_color": "#373a40",
+  "background_color": "#373a40",
   "description": "Piktures is an Image Browsing Webapp that allows you to search for images and view them. You can also download the images and share them with your friends."
 }

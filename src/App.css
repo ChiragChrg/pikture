@@ -169,7 +169,6 @@
 
   .SIcon {
     padding: 0.5em 0.5em;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -198,6 +197,7 @@
     align-items: center;
     width: 100%;
     margin-top: 1em;
+    transition: 0.4s ease-in-out;
   }
 
   .Filter {
@@ -209,7 +209,6 @@
 
   .Dropdown {
     width: 200px;
-    color: #fff !important;
   }
 
   .Filter-select {
@@ -227,9 +226,17 @@
 
   .MenuItem p {
     width: 6em;
+    text-align: center;
   }
 
-  .MuiSelect-select {
+  /* MUI component class names for Select tag*/
+  .MuiOutlinedInput-notchedOutline {
+    border: 1px solid #ddd !important;
+  }
+
+  .MuiInputLabel-root,
+  .MuiSelect-select,
+  .MuiSvgIcon-root {
     color: #fff !important;
   }
 
@@ -237,11 +244,13 @@
   .DashImages {
     padding: 0 1em;
     column-width: calc(250px + 10vw);
+    min-height: 60vh;
   }
 
   .SearchImages {
     padding: 0 1em;
     column-width: calc(250px + 10vw);
+    min-height: 60vh;
   }
 
   .Image {

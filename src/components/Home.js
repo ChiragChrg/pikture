@@ -33,6 +33,8 @@ const Home = () => {
         SkeletonBox.style.display = "none";
         DashImages.style.display = "block";
       } else {
+        SkeletonBox.style.display = "grid";
+        DashImages.style.display = "none";
         console.log("Error");
       }
     } catch (err) {
