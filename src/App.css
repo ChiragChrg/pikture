@@ -244,13 +244,11 @@
   .DashImages {
     padding: 0 1em;
     column-width: calc(250px + 10vw);
-    min-height: 60vh;
   }
 
   .SearchImages {
     padding: 0 1em;
     column-width: calc(250px + 10vw);
-    min-height: 60vh;
   }
 
   .Image {
