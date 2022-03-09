@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Photos from "./API/Photos";
-import {
-  Skeleton,
-  InputLabel,
-  Select,
-  MenuItem,
-  FormControl,
-} from "@mui/material";
+import axios from "axios";
+import { Skeleton } from "@mui/material";
 import "../App.css";
 import "../Mobile.css";
 
@@ -16,210 +10,45 @@ const Home = () => {
     FetchImages();
   }, []);
 
-  // //Div Elements
-  var DashImages = document.querySelector(".DashImages");
-  var SearchImages = document.querySelector(".SearchImages");
+  const [images, setImages] = useState([]);
 
   //Fetch random images from Unsplash API
-  const [images, setImages] = useState([]);
   const FetchImages = async () => {
     //Div Elements
     var SkeletonBox = document.querySelector(".SkeletonImages");
     var DashImages = document.querySelector(".DashImages");
-    var SearchImages = document.querySelector(".SearchImages");
 
     const API = `https://api.unsplash.com/`;
     const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
+    const RandomURL = `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=latest`;
     SkeletonBox.style.display = "grid";
 
-    const res = await fetch(
-      `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=latest`
-    );
-    const data = await res.json();
-    if (data) {
-      SkeletonBox.style.display = "none";
-      SearchImages.style.display = "none";
-      DashImages.style.display = "block";
-    }
-    // console.log(data);
-    setImages(data);
-  };
+    try {
+      var res = await axios.get(RandomURL);
+      var data = res.data;
+      // console.log(data);
 
-  //Set Query state onChange
-  const [query, setQuery] = useState("");
-  const onChange = (e) => {
-    let sValue = e.target.value;
-    if (sValue === "") {
-      DashImages.style.display = "block";
-      SearchImages.style.display = "none";
-    }
-    setQuery(sValue);
-  };
-
-  //Search Query by calling function from Photos.js
-  const [srchImg, setSrchImg] = useState([]);
-  var orderBy = "relevant";
-  var orientation;
-
-  //Image Orientation Acc to device
-  const { innerWidth: width } = window;
-  if (width < 396) orientation = "portrait";
-  else orientation = "landscape";
-
-  const [selectOrient, setSelectOrient] = useState(orientation); //Only used to set Select tag value
-  const onChangeOrientation = (evt) => {
-    orientation = evt.target.value;
-    setSelectOrient(orientation);
-    setSelectOrder(orderBy); //Resetting Select box values
-    search("Search");
-  };
-
-  //Image Order By
-  const [selectOrder, setSelectOrder] = useState("relevant"); //Only used to set Select tag value
-  const onChangeOrderBy = (evt) => {
-    orderBy = evt.target.value;
-    setSelectOrder(orderBy);
-    setSelectOrient(orientation); //Resetting Select box values
-    search("Search");
-  };
-
-  const search = async (evt) => {
-    //Div Elements
-    var SkeletonBox = document.querySelector(".SkeletonImages");
-    var DashImages = document.querySelector(".DashImages");
-    var SearchImages = document.querySelector(".SearchImages");
-
-    //Just because 'onSubmit' is not working, so using 'onkeypress'
-    var goSearch = evt; //if called by Filter Changes
-    if (evt.key === "Enter") {
-      goSearch = "Search"; //if called by pressing Enter
-    }
-
-    if (goSearch === "Search") {
-      SkeletonBox.style.display = "grid";
-      // console.log(query, orderBy, orientation);
-      const result = await Photos(query, orderBy, orientation);
-      if (result) {
+      if (data.length > 0) {
+        setImages(data);
         SkeletonBox.style.display = "none";
-        DashImages.style.display = "none";
-        SearchImages.style.display = "block";
+        DashImages.style.display = "block";
+      } else {
+        console.log("Error");
       }
-      setSrchImg(result);
+    } catch (err) {
+      console.log(err);
     }
   };
 
   //Fake IDs for Skeleton mapping
-  var FakeArray = [
-    { id: 1 },
-    { id: 2 },
-    { id: 3 },
-    { id: 4 },
-    { id: 5 },
-    { id: 6 },
-    { id: 7 },
-    { id: 8 },
-    { id: 9 },
-    { id: 10 },
-  ];
-
-  //Images Filters
-  const showFilters = () => {
-    const ImageControl = document.querySelector(".ImageControl");
-
-    if (ImageControl.style.display === "none") {
-      ImageControl.style.display = "flex";
-    } else ImageControl.style.display = "none";
-  };
+  var FakeID = [];
+  for (var i = 0; i < 20; i++) {
+    FakeID.push({ id: i });
+  }
+  // console.log(FakeID);
 
   return (
     <div className="container">
-      <div className="SearchBar">
-        <div className="SearchHolder">
-          <div className="SearchBtn SIcon">
-            <i className="fas fa-search"></i>
-          </div>
-          <input
-            type="text"
-            className="Search"
-            placeholder="Search for Piktures"
-            value={query}
-            onChange={onChange}
-            onKeyPress={search}
-          />
-          <div className="FilterBtn SIcon" onClick={showFilters}>
-            <i className="fas fa-filter"></i>
-          </div>
-        </div>
-
-        <div className="ImageControl" style={{ display: "none" }}>
-          <div className="Filter OrderBy">
-            <div className="Dropdown">
-              <FormControl fullWidth>
-                <InputLabel id="orderby-label">Order By</InputLabel>
-                <Select
-                  labelId="orderby-select"
-                  id="orderby-select"
-                  className="Filter-Select"
-                  value={selectOrder}
-                  fullWidth
-                  label="Order By"
-                  onChange={onChangeOrderBy}
-                >
-                  <MenuItem value={"latest"}>
-                    <div className="MenuItem">
-                      <i className="far fa-fire-alt"></i>
-                      <p>Latest</p>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value={"relevant"}>
-                    <div className="MenuItem">
-                      <i className="far fa-thumbs-up"></i>
-                      <p>Relevant</p>
-                    </div>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </div>
-
-          <div className="Filter Orientation">
-            <div className="Dropdown">
-              <FormControl fullWidth sx={{ color: "#fff" }}>
-                <InputLabel id="orient-label">Orientation</InputLabel>
-                <Select
-                  labelId="orient-select"
-                  id="orient-select"
-                  className="Filter-Select"
-                  value={selectOrient}
-                  fullWidth
-                  label="Orientation"
-                  onChange={onChangeOrientation}
-                >
-                  <MenuItem value={"landscape"}>
-                    <div className="MenuItem">
-                      <i className="far fa-rectangle-wide"></i>
-                      <p>Landscape</p>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value={"portrait"}>
-                    <div className="MenuItem">
-                      <i className="far fa-rectangle-portrait"></i>
-                      <p>Portrait</p>
-                    </div>
-                  </MenuItem>
-                  <MenuItem value={"squarish"}>
-                    <div className="MenuItem">
-                      <i className="far fa-square"></i>
-                      <p>Squarish</p>
-                    </div>
-                  </MenuItem>
-                </Select>
-              </FormControl>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Random Onload Images */}
       <div className="DashImages">
         {images.map((images) => (
@@ -229,18 +58,9 @@ const Home = () => {
         ))}
       </div>
 
-      {/* Search Result Images */}
-      <div className="SearchImages">
-        {srchImg.map((srchImg) => (
-          <div className="Image" key={srchImg.id}>
-            <img src={srchImg.urls.small} alt={srchImg.id} />
-          </div>
-        ))}
-      </div>
-
       {/* Skeleton Images */}
       <div className="SkeletonImages">
-        {FakeArray.map((Skele) => (
+        {FakeID.map((Skele) => (
           <div className="Skeleton" key={Skele.id}>
             <Skeleton animation="wave" variant="rectangular" height="250px" />
           </div>
