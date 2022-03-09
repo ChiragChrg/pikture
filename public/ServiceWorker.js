@@ -1,4 +1,4 @@
-const CacheName = "V-1.6";
+const CacheName = "V-1.7";
 const CacheList = [
   "/",
   "assets/fonts/quicksand-v28-latin-regular.eot",
@@ -15,6 +15,7 @@ const CacheList = [
   "assets/icons/384.png",
   "assets/icons/512.png",
   "index.html",
+  "offline.html",
   "manifest.json",
   "ServiceWorker.js",
   "../src/index.js",
