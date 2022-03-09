@@ -18,8 +18,7 @@ const SearchBar = () => {
 
   useEffect(() => {
     search("Search");
-    // eslint-disable-line react-hooks/exhaustive-deps
-  }, [filter]);
+  }, [filter]); // eslint-disable-line react-hooks/exhaustive-deps
 
   //Set Query state onChange
   const onChange = (e) => {

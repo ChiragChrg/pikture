@@ -13,37 +13,37 @@ const Search = () => {
   // console.log(state);
 
   useEffect(() => {
-    const Photos = async () => {
-      //Div Elements
-      var SkeletonBox = document.querySelector(".SkeletonImages");
-      var SearchImages = document.querySelector(".SearchImages");
-
-      if (query !== "") {
-        const API = `https://api.unsplash.com/search/`;
-        const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
-        var URL = `${API}photos?client_id=${API_KEY}&query=${query}&page=1&per_page=20&order_by=${orderBy}&orientation=${orientation}`;
-
-        try {
-          SkeletonBox.style.display = "grid";
-          var res = await axios.get(URL);
-          var data = res.data.results;
-          // console.log(data);
-
-          if (data.length > 0) {
-            setSrchImg(data);
-            SkeletonBox.style.display = "none";
-            SearchImages.style.display = "block";
-          } else {
-            console.log("Error");
-          }
-        } catch (err) {
-          console.log(err);
-        }
-      }
-    };
-
     Photos();
-  }, [state]);
+  }, [state]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const Photos = async () => {
+    //Div Elements
+    var SkeletonBox = document.querySelector(".SkeletonImages");
+    var SearchImages = document.querySelector(".SearchImages");
+
+    if (query !== "") {
+      const API = `https://api.unsplash.com/search/`;
+      const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
+      var URL = `${API}photos?client_id=${API_KEY}&query=${query}&page=1&per_page=20&order_by=${orderBy}&orientation=${orientation}`;
+
+      try {
+        SkeletonBox.style.display = "grid";
+        var res = await axios.get(URL);
+        var data = res.data.results;
+        // console.log(data);
+
+        if (data.length > 0) {
+          setSrchImg(data);
+          SkeletonBox.style.display = "none";
+          SearchImages.style.display = "block";
+        } else {
+          console.log("Error");
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
 
   //Fake IDs for Skeleton mapping
   var FakeID = [];
