@@ -11,7 +11,7 @@ const SearchBar = () => {
   const navigate = useNavigate(); //Used to change path dynamically
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState({
-    orderBy: "latest",
+    orderBy: "relevant",
     orientation: userOrient,
   });
   // console.log(filter);

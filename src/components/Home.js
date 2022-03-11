@@ -20,6 +20,7 @@ const Home = () => {
 
     const API = `https://api.unsplash.com/`;
     const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+    console.log(API_KEY);
 
     const RandomURL = `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=latest`;
     SkeletonBox.style.display = "grid";
