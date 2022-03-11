@@ -42,7 +42,7 @@ const SearchBar = () => {
     if (goSearch === "Search") {
       if (query !== "") {
         //Redirects to /search with query
-        navigate(`/search?${query}`, {
+        navigate(`/search`, {
           state: {
             query: query,
             orderBy: orderBy,

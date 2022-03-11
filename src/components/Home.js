@@ -19,7 +19,8 @@ const Home = () => {
     var DashImages = document.querySelector(".DashImages");
 
     const API = `https://api.unsplash.com/`;
-    const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+    // const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+    const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
 
     const RandomURL = `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=latest`;
     SkeletonBox.style.display = "grid";

@@ -23,7 +23,8 @@ const Search = () => {
 
     if (query !== "") {
       const API = `https://api.unsplash.com/search/`;
-      const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+      // const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
+      const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
 
       var URL = `${API}photos?client_id=${API_KEY}&query=${query}&page=1&per_page=20&order_by=${orderBy}&orientation=${orientation}`;
 
