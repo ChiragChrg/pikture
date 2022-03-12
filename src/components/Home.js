@@ -20,7 +20,6 @@ const Home = () => {
 
     const API = `https://api.unsplash.com/`;
     const API_KEY = process.env.REACT_APP_UNSPLASH_API_KEY;
-    // const API_KEY = "UwYbM2BpadCTxoWKpeFHl8iw87xl3RAhc8uP3PWdyu0";
 
     const RandomURL = `${API}photos?client_id=${API_KEY}&page=1&per_page=20&order_by=latest`;
     SkeletonBox.style.display = "grid";
@@ -49,7 +48,7 @@ const Home = () => {
   for (var i = 0; i < 20; i++) {
     FakeID.push({ id: i });
   }
-  // console.log(FakeID);
+  // // console.log(FakeID);
 
   return (
     <div className="container">
