@@ -1,11 +1,6 @@
-const CacheName = "V-1.9";
+const CacheName = "V-2.0";
 const CacheList = [
   "/",
-  "assets/fonts/quicksand-v28-latin-regular.eot",
-  "assets/fonts/quicksand-v28-latin-regular.svg",
-  "assets/fonts/quicksand-v28-latin-regular.ttf",
-  "assets/fonts/quicksand-v28-latin-regular.woff",
-  "assets/fonts/quicksand-v28-latin-regular.woff2",
   "assets/icons/48.png",
   "assets/icons/72.png",
   "assets/icons/96.png",
@@ -20,16 +15,6 @@ const CacheList = [
   "offline.html",
   "manifest.json",
   "ServiceWorker.js",
-  "../src/index.js",
-  "../src/App.js",
-  "../src/App.css",
-  "../src/Mobile.css",
-  "../src/components/Navbar.js",
-  "../src/components/SearchBar.js",
-  "../src/components/Home.js",
-  "../src/components/About.js",
-  "../src/components/Footer.js",
-  "../src/components/API/Search.js",
 ];
 
 //Installing Service Worker
