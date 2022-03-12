@@ -42,7 +42,7 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
     overflow-x: hidden;
-    /* height: 100vh; */
+    height: 100vh;
     background-color: var(--bg);
   }
 
