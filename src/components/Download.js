@@ -11,34 +11,6 @@ const Download = () => {
   var Regular = {};
   var Small = {};
 
-  useEffect(() => {
-    const RunOnload = async () => {
-      Full = await GetUrl("full");
-      Raw = await GetUrl("raw");
-      Regular = await GetUrl("regular");
-      Small = await GetUrl("small");
-
-      const DwnloadLink = document.querySelector(".downloadLink");
-      const Loader = document.querySelector(".loader");
-      Loader.style.display = "none";
-
-      if (window.innerWidth < 395) {
-        DwnloadLink.style.display = "grid";
-      } else DwnloadLink.style.display = "flex";
-
-      const FullBtn = document.querySelector("#dwnBtn1");
-      const RawBtn = document.querySelector("#dwnBtn2");
-      const RegularBtn = document.querySelector("#dwnBtn3");
-      const SmallBtn = document.querySelector("#dwnBtn4");
-
-      FullBtn.innerHTML = `<i class="fad fa-download"></i> <span>Full</span> (${Full.sizeMB})`;
-      RawBtn.innerHTML = `<i class="fad fa-download"></i> <span>Raw</span> (${Raw.sizeMB})`;
-      RegularBtn.innerHTML = `<i class="fad fa-download"></i> <span>Regular</span> (${Regular.sizeMB})`;
-      SmallBtn.innerHTML = `<i class="fad fa-download"></i> <span>Small</span> (${Small.sizeMB})`;
-    };
-    RunOnload();
-  }, []);
-
   const GetUrl = async (res) => {
     if (res === "full") {
       var fetchUrl = state.urls.full;
@@ -59,6 +31,36 @@ const Download = () => {
     var ImgData = { Url: Url, sizeMB: sizeMB };
     return ImgData;
   };
+
+  // useEffect(() => {
+  const RunOnload = async () => {
+    Full = await GetUrl("full");
+    Raw = await GetUrl("raw");
+    Regular = await GetUrl("regular");
+    Small = await GetUrl("small");
+
+    const DwnloadLink = document.querySelector(".downloadLink");
+    const Loader = document.querySelector(".loader");
+    Loader.style.display = "none";
+
+    if (window.innerWidth < 395) {
+      DwnloadLink.style.display = "grid";
+    } else DwnloadLink.style.display = "flex";
+
+    const FullBtn = document.querySelector("#dwnBtn1");
+    const RawBtn = document.querySelector("#dwnBtn2");
+    const RegularBtn = document.querySelector("#dwnBtn3");
+    const SmallBtn = document.querySelector("#dwnBtn4");
+
+    FullBtn.innerHTML = `<i class="fad fa-download"></i> <span>Full</span> (${Full.sizeMB})`;
+    RawBtn.innerHTML = `<i class="fad fa-download"></i> <span>Raw</span> (${Raw.sizeMB})`;
+    RegularBtn.innerHTML = `<i class="fad fa-download"></i> <span>Regular</span> (${Regular.sizeMB})`;
+    SmallBtn.innerHTML = `<i class="fad fa-download"></i> <span>Small</span> (${Small.sizeMB})`;
+  };
+  // RunOnload();
+  // }, []);
+
+  window.onload = RunOnload();
 
   const Downloader = async (size) => {
     var imageURL = "";
