@@ -16,6 +16,14 @@ const SearchBar = () => {
   });
   // console.log(filter);
 
+  const path = window.location.pathname;
+  useEffect(() => {
+    const searchBar = document.querySelector(".SearchBar");
+    if (path === "/about" || path === "/download")
+      searchBar.style.display = "none";
+    else searchBar.style.display = "flex";
+  }, [path]);
+
   useEffect(() => {
     search("Search");
   }, [filter]); // eslint-disable-line react-hooks/exhaustive-deps

@@ -1,7 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  //Toggle Active class on Navbar
+  const location = useLocation();
+  React.useEffect(() => {
+    var path = location.pathname;
+    const ActiveA = document.querySelector("#A");
+    const ActiveB = document.querySelector("#B");
+    if (path === "/search" || path === "/download") {
+      ActiveA.classList.remove("active");
+      ActiveB.classList.remove("active");
+    } else if (path === "/about") {
+      if (ActiveA.className === "active") ActiveA.classList.remove("active");
+      ActiveB.classList.add("active");
+    } else {
+      if (ActiveB.className === "active") ActiveB.classList.remove("active");
+      ActiveA.classList.add("active");
+    }
+
+    if (window.innerWidth < 395) {
+      document.querySelector("#sidepanel").style.width = "0%";
+    }
+  }, [location]);
+
   // Pop Mobile Navbar
   const openNav = () => {
     document.querySelector("#sidepanel").style.width = "50%";
@@ -12,40 +34,6 @@ const Navbar = () => {
     document.querySelector("#sidepanel").style.width = "0%";
     document.querySelector("html").style.overflow = "auto";
     document.querySelector("body").style.overflow = "auto";
-  };
-
-  //Toggle Nav button Active state
-  window.onload = () => {
-    var CheckUrl = window.location.href;
-    if (CheckUrl.indexOf("/about") > -1) {
-      document.querySelector("#B").classList.add("active");
-      document.querySelector("#A").classList.remove("active");
-    } else {
-      document.querySelector("#A").classList.add("active");
-      document.querySelector("#B").classList.remove("active");
-    }
-  };
-
-  const SwitchActive = (evt) => {
-    if (window.innerWidth < 395) {
-      document.querySelector("#sidepanel").style.width = "0%";
-    }
-
-    const ASwtch = document.querySelector("#A");
-    const BSwtch = document.querySelector("#B");
-    let NavClass = evt.target;
-
-    if (NavClass.id === "A") {
-      if (NavClass.className === "") {
-        ASwtch.classList.add("active");
-        BSwtch.classList.remove("active");
-      }
-    } else if (NavClass.id === "B") {
-      if (NavClass.className === "") {
-        BSwtch.classList.add("active");
-        ASwtch.classList.remove("active");
-      }
-    }
   };
 
   //Check previous Theme on load
@@ -91,6 +79,47 @@ const Navbar = () => {
     }
   };
 
+  //Mobile navigation swipe right to left
+  document.body.addEventListener("touchstart", startTouch, { passive: false });
+  document.body.addEventListener("touchmove", moveTouch, { passive: false });
+
+  var initialX = null;
+  var initialY = null;
+
+  function startTouch(e) {
+    initialX = e.touches[0].clientX;
+    initialY = e.touches[0].clientY;
+  }
+
+  function moveTouch(e) {
+    if (initialX === null) {
+      return;
+    }
+
+    if (initialY === null) {
+      return;
+    }
+
+    var currentX = e.touches[0].clientX;
+    var currentY = e.touches[0].clientY;
+
+    var diffX = initialX - currentX;
+    var diffY = initialY - currentY;
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        document.querySelector("#sidepanel").style.width = "50%";
+      } else {
+        document.querySelector("#sidepanel").style.width = "0%";
+      }
+    }
+
+    initialX = null;
+    initialY = null;
+
+    e.preventDefault();
+  }
+
   return (
     <div className="NavBar">
       <div className="Logo">
@@ -113,10 +142,10 @@ const Navbar = () => {
           ></i>
           <ul>
             <li>
-              <Link onClick={SwitchActive} id="A" className="active" to="/">
+              <Link id="A" className="active" to="/">
                 Home
               </Link>
-              <Link onClick={SwitchActive} id="B" className="" to="/about">
+              <Link id="B" className="" to="/about">
                 About
               </Link>
               <a

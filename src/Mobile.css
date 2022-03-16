@@ -7,6 +7,7 @@
     --active: #00adb5;
     --white: #fff;
     --theme: #303030;
+    --downld: #eee;
     --search: rgba(104, 109, 118, 0.8);
     --footer: #373a40;
     --navbg: #fff;
@@ -16,11 +17,12 @@
   [data-theme="dark"] {
     --primary: #222831;
     --secondary: #00adb5;
-    --font: #1e232a;
+    --font: #eee;
     --bg: #393e46;
     --active: #fff;
     --white: #fff;
     --theme: #ffd700;
+    --downld: #222831;
     --search: rgba(89, 94, 102, 0.8);
     --footer: #373a40;
     --navbg: #393e46;
@@ -151,11 +153,11 @@
     flex-direction: column;
     position: sticky;
     top: 0;
-    padding: 1.5em 0;
+    padding: 1em 0;
     z-index: 1;
     backdrop-filter: blur(6px) saturate(180%);
     -webkit-backdrop-filter: blur(6px) saturate(180%);
-    background-color: rgba(57, 62, 70, 0.8);
+    background-color: var(--search);
     margin-bottom: 1em;
   }
 
@@ -174,7 +176,7 @@
     background-color: var(--white);
     font-size: 16px;
     letter-spacing: 0.5px;
-    color: var(--font);
+    color: #1e232a;
     text-align: center;
     outline: none;
     transition: 0.3s ease-in-out;
@@ -253,19 +255,32 @@
     color: #fff !important;
   }
 
-  /* Dashboad Images CSS */
+  /* DASHBOARD IMAGES CSS */
   .DashImages {
     padding: 0 1em;
     column-width: calc(100px + 10vw);
   }
 
+  .ImgWrapper {
+    margin-bottom: 0.5em;
+    position: relative;
+    width: 100%;
+    height: fit-content;
+    /* min-height: 280px; */
+  }
+
+  .Placeholder {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5em;
+  }
+
+  /* SEARCH IMAGES CSS */
   .SearchImages {
     padding: 0 1em;
     column-width: calc(100px + 10vw);
-  }
-
-  .Image {
-    padding-top: 0.5em;
   }
 
   .Image img {
@@ -273,6 +288,105 @@
     border-radius: 0.5em;
   }
 
+  /* SELECTED IMAGE PREVIEW CSS Photo.js */
+  .container {
+    width: 100%;
+    height: 100%;
+    min-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em 0;
+  }
+
+  .Preview {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--downld);
+    border-radius: 15px;
+    padding: 2.5em 1.5em;
+    width: 90vw;
+    height: fit-content;
+    box-shadow: 0.8px 0.8px 2.2px rgba(0, 0, 0, 0.02),
+      2px 2px 5.3px rgba(0, 0, 0, 0.028), 3.8px 3.8px 10px rgba(0, 0, 0, 0.035),
+      6.7px 6.7px 17.9px rgba(0, 0, 0, 0.042),
+      12.5px 12.5px 33.4px rgba(0, 0, 0, 0.05),
+      30px 30px 80px rgba(0, 0, 0, 0.07);
+  }
+
+  .ImgaePreview > img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5em !important;
+  }
+
+  .download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* border-left: 1px solid var(--font); */
+    /* padding-left: 4em; */
+    /* height: 90vh; */
+    min-height: 20vh;
+  }
+
+  .download p {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 1em 0;
+    color: var(--font);
+    border-bottom: 1px solid var(--font);
+  }
+
+  .loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 90vh; */
+    min-height: 10vh;
+  }
+
+  .loader i {
+    padding-top: 3.8px;
+    animation: loading 1s linear infinite;
+    color: var(--font);
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .downloadLink {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8em;
+  }
+
+  .downloadLink button {
+    border: none;
+    outline: none;
+    padding: 0.8em 1em;
+    cursor: pointer;
+    background-color: #00aeae;
+    color: #fff;
+    border-radius: 0.5em;
+    width: 11em;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* SKELETON CSS */
   .SkeletonImages {
     padding: 0 1em;
     /* column-width: calc(200px + 10vw); */
