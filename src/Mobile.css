@@ -145,6 +145,35 @@
     position: absolute;
   }
 
+  .InstallPWA {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--navcolor);
+    color: var(--white);
+    margin: 0 2em;
+    padding: 0.5em 1em;
+    border-radius: 50px;
+    margin-top: 3em;
+  }
+
+  .pwaButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .insIco {
+    padding-top: 0.1em;
+    font-size: 20px;
+  }
+
+  .insTxt {
+    margin-left: 0.6em;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+  }
+
   /* Search Bar CSS */
   .SearchBar {
     display: flex;

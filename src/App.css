@@ -131,6 +131,44 @@
     position: absolute;
   }
 
+  .InstallPWA {
+    display: flex;
+    justify-content: space-center;
+    align-items: center;
+    color: var(--primary);
+    padding: 0.5em 1em;
+    margin-left: 2em;
+    background-color: var(--secondary);
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+  }
+
+  .InstallPWA:hover {
+    border: 1px solid var(--secondary);
+    background-color: var(--primary);
+    color: var(--secondary);
+    box-shadow: 4px 2px 4px 0 rgba(48, 48, 48, 0.4);
+  }
+
+  .pwaButton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .insIco {
+    padding-top: 0.1em;
+    font-size: 20px;
+  }
+
+  .insTxt {
+    margin-left: 0.6em;
+    font-weight: 600;
+    letter-spacing: 1.1px;
+  }
+
   /* Search Bar CSS */
   .SearchBar {
     display: flex;

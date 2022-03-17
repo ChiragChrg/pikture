@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   //Toggle Active class on Navbar
   const location = useLocation();
-  React.useEffect(() => {
+  useEffect(() => {
     var path = location.pathname;
     const ActiveA = document.querySelector("#A");
     const ActiveB = document.querySelector("#B");
@@ -23,6 +23,45 @@ const Navbar = () => {
       document.querySelector("#sidepanel").style.width = "0%";
     }
   }, [location]);
+
+  //PWA Install
+  useEffect(() => {
+    //BeforeInstallPromptEvent
+    const buttonHolder = document.querySelector(".InstallPWA");
+    let deferredPrompt;
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      buttonHolder.style.display = "flex";
+    });
+
+    //On Install Button Click
+    const installButton = document.querySelector(".pwaButton");
+    installButton.addEventListener("click", async () => {
+      if (deferredPrompt) {
+        buttonHolder.style.display = "none";
+        deferredPrompt.prompt();
+        // const { outcome } = await deferredPrompt.userChoice;
+        deferredPrompt = null;
+      } else {
+        alert("Prompt Failed");
+      }
+    });
+
+    //Check App Installed
+    window.addEventListener("appinstalled", () => {
+      deferredPrompt = null;
+      console.log("PWA was installed");
+    });
+
+    //Hide PWA Button if already installed
+    if (
+      window.matchMedia("(display-mode: standalone)").matches ||
+      window.navigator.standalone === true
+    ) {
+      buttonHolder.style.display = "none";
+    }
+  }, []);
 
   // Pop Mobile Navbar
   const openNav = () => {
@@ -163,6 +202,15 @@ const Navbar = () => {
               >
                 <i id="toggle" className="fad fa-lightbulb fa-2x"></i>
               </div>
+
+              {/* PWA Install Button */}
+              <div className="InstallPWA" style={{ display: "none" }}>
+                <div className="pwaButton">
+                  <i className="far fa-sign-in insIco"></i>
+                  <p className="insTxt">Install</p>
+                </div>
+              </div>
+              {/* PWA Install Button */}
             </li>
           </ul>
         </div>

@@ -10,6 +10,16 @@ import Download from "./components/Download";
 import "./App.css";
 
 function App() {
+  //Switch Dektop/Moblie Buttons
+  // const mediaQuery = window.matchMedia("(max-width: 395px)");
+  // const DesktopInstall = document.querySelector(".deskPwa");
+  // const MobileInstall = document.querySelector(".mobPwa");
+  // if (mediaQuery.matches) {
+  //   MobileInstall.classList.toggle("pwaButtonHolder");
+  // } else {
+  //   DesktopInstall.classList.toggle("pwaButtonHolder");
+  // }
+
   return (
     <Browser>
       <Navbar />
