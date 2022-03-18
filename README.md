@@ -3,10 +3,10 @@
 # Pikture
 ##### Created : 11/02/2022
 
-[Piktures](https://pikture.netlify.app/) is a webapp which contains all the website links developed by ChiragChrg.
+[Piktures](https://pikture.netlify.app/) is an Image Browsing Webapp that allows you to search for images and view them. You can also download the images and share them with your friends.
 
 ### Preview
-![Piktures Preview](./public/assets/Preview.png)
+![Piktures Preview](public/assets/preview.png)
 
 #### Languages
 <div style="display: flex; justify-content: center; align-items: center; padding: 1em;">
