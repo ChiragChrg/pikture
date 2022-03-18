@@ -6,7 +6,7 @@
 [Piktures](https://pikture.netlify.app/) is a webapp which contains all the website links developed by ChiragChrg.
 
 ### Preview
-![Piktures Preview](./assets/Preview.png)
+![Piktures Preview](./public/assets/Preview.png)
 
 #### Languages
 <div style="display: flex; justify-content: center; align-items: center; padding: 1em;">
@@ -36,6 +36,6 @@
         title="React"
         width="40px"
         style="margin: 20px 0;"
-        src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/React.png"
+        src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/React.png"
       />
       </div>
