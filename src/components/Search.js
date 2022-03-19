@@ -87,8 +87,9 @@ const Search = () => {
             <LazyLoad className="Image">
               <img
                 onLoad={removePlaceholder}
-                src={srchImg.urls.small}
+                src={srchImg.urls.small + "&fm=webp"}
                 alt={srchImg.id}
+                rel="preload"
               />
             </LazyLoad>
           </div>

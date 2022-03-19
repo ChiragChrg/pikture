@@ -169,7 +169,11 @@ const Navbar = () => {
       </div>
 
       <div className="Nav">
-        <button className="openbtn navmain" onClick={openNav}>
+        <button
+          className="openbtn navmain"
+          onClick={openNav}
+          aria-label="Nav Open"
+        >
           <i className="fad fa-bars fa-2x"></i>
         </button>
 
