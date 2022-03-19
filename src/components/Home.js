@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Skeleton } from "@mui/material";
-import { Blurhash } from "react-blurhash";
+// import { Blurhash } from "react-blurhash";
 import { useNavigate } from "react-router-dom";
 import LazyLoad from "react-lazyload";
 import "../App.css";
@@ -32,7 +32,6 @@ const Home = () => {
       var res = await axios.get(RandomURL);
       var data = res.data;
       // console.log(data.length);
-      console.log(data);
 
       if (data.length > 0 && data.length !== 313) {
         setImages(data);
@@ -80,15 +79,15 @@ const Home = () => {
             onClick={() => gotoPreview(images)}
           >
             <div className="Placeholder">
-              {/* <Skeleton animation="wave" variant="rectangular" height="100%" /> */}
-              <Blurhash
+              <Skeleton animation="wave" variant="rectangular" height="100%" />
+              {/* <Blurhash
                 hash={images.blur_hash}
                 width="100%"
                 height="100%"
                 resolutionX={32}
                 resolutionY={32}
                 punch={1}
-              />
+              /> */}
             </div>
 
             <LazyLoad className="Image">
