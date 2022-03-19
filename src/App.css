@@ -283,6 +283,7 @@
 
   /* DASHBOARD IMAGES CSS */
   .DashImages {
+    min-height: 100vh;
     padding: 0 1em;
     column-width: calc(150px + 10vw);
   }
@@ -292,7 +293,7 @@
     position: relative;
     width: 100%;
     height: fit-content;
-    /* min-height: 280px; */
+    min-height: 180px;
   }
 
   .Placeholder {
@@ -300,11 +301,14 @@
     position: absolute;
     width: 100%;
     height: 100%;
+    /* width: clamp(350px, 25vw, 100%);
+    height: clamp(200px, 15vh, 100%); */
     border-radius: 0.5em;
   }
 
   /* SEARCH IMAGES CSS */
   .SearchImages {
+    min-height: 100vh;
     padding: 0 1em;
     column-width: calc(150px + 10vw);
   }

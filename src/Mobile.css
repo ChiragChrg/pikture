@@ -286,6 +286,7 @@
 
   /* DASHBOARD IMAGES CSS */
   .DashImages {
+    min-height: 100vh;
     padding: 0 1em;
     column-width: calc(100px + 10vw);
   }
@@ -295,7 +296,7 @@
     position: relative;
     width: 100%;
     height: fit-content;
-    /* min-height: 280px; */
+    min-height: 100px;
   }
 
   .Placeholder {
