@@ -86,7 +86,6 @@ const Home = () => {
                 onLoad={removePlaceholder}
                 src={images.urls.small + "&fm=webp"}
                 alt={images.id}
-                rel="preload"
                 width="100%"
                 height="100%"
               />

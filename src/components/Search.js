@@ -89,7 +89,8 @@ const Search = () => {
                 onLoad={removePlaceholder}
                 src={srchImg.urls.small + "&fm=webp"}
                 alt={srchImg.id}
-                rel="preload"
+                width="100%"
+                height="100%"
               />
             </LazyLoad>
           </div>
